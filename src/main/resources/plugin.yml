@@ -1,0 +1,7 @@
+main: me.MrIronMan.AntiDrop.Main
+name: BedWars1058-AntiDrop
+version: ${project.version}
+author: MrIronMan
+description: BedWars1058 Addon by MrIronMan
+
+depends: [BedWars1058]
