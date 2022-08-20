@@ -1,7 +1,8 @@
-main: me.MrIronMan.AntiDrop.Main
+main: club.mher.AntiDrop.Main
 name: BedWars1058-AntiDrop
 version: ${project.version}
-author: MrIronMan
-description: BedWars1058 Addon by MrIronMan
+author: Mher Zaqaryan
+description: BedWars1058 Anti Drop Addon by Mher Zaqaryan
 
-depends: [BedWars1058]
+softdepend:
+  - BedWars1058
