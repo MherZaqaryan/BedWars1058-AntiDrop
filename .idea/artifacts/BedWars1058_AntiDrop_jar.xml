@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="BedWars1058-AntiDrop:jar">
-    <output-path>$USER_HOME$/Desktop/JavaScript/Minecraft Server/plugins</output-path>
-    <root id="archive" name="BedWars1058-AntiDrop.jar">
-      <element id="module-output" name="BedWars1058-AntiDrop" />
-    </root>
-  </artifact>
-</component>
