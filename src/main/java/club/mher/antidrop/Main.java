@@ -6,12 +6,14 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends JavaPlugin implements Listener {
 
@@ -35,14 +37,21 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onItemDrop(PlayerDropItemEvent e) {
         Player player = e.getPlayer();
-        if (!bedwarsAPI.getArenaUtil().isPlaying(player)) {
+        if (!this.bedwarsAPI.getArenaUtil().isPlaying(player)) {
             return;
         }
-        if (!bedwarsAPI.getArenaUtil().getArenaByPlayer(player).getStatus().equals(GameState.playing)) {
+        if (!this.bedwarsAPI.getArenaUtil().getArenaByPlayer(player).getStatus().equals(GameState.playing)) {
             return;
         }
-        Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-        if (!block.getType().equals(Material.AIR)) {
+        List<Block> blocks = new ArrayList<>();
+        blocks.add(player.getLocation().clone().subtract(0.0D, 0.1D, 0.0D).getBlock());
+        for (int i = 1; i <= 4; i++) {
+            blocks.add(player.getLocation().clone().subtract(0.0D, i, 0.0D).getBlock());
+        }
+        for (Block block : blocks) {
+            if (block.getType().equals(Material.AIR)) {
+                continue;
+            }
             return;
         }
         e.setCancelled(true);
